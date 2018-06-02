@@ -1,5 +1,5 @@
 .idea/*
-QuizWeb.iml
+out/*
+**.iml
 build
 **.class
-out/*
