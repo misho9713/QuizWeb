@@ -1,0 +1,5 @@
+.idea/*
+QuizWeb.iml
+build
+**.class
+out/*
