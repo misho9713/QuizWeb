@@ -4,7 +4,7 @@ body {
 
 .container {
   display: grid;
-  grid-template-areas: 'header header header header header header' 'menu main main main right right' 'menu footer footer footer footer footer';
+  grid-template-areas: 'header header header header header header' 'menu main main main main right' 'menu footer footer footer footer footer';
   grid-gap: 10px;
   /*background-color: #2196F3;*/
   padding: 10px;
@@ -18,9 +18,17 @@ body {
   grid-area: header;
 }
 
-.header * {
+.header ul {
   list-style: none;
   display: inline;
+}
+
+.header * {
+  display: inline;
+}
+
+.header {
+  padding: 5px;
 }
 
 .menu {
@@ -52,4 +60,8 @@ body {
 
 .logo {
   height: 20px;
+}
+
+.right_header {
+  float: right;
 }

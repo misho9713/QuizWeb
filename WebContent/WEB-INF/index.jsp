@@ -11,9 +11,10 @@
   <jsp:attribute name="head">
     <title>Quiz Website</title>
   </jsp:attribute>
+  <jsp:attribute name="header_left">
+  </jsp:attribute>
 
   <jsp:attribute name="menu">
-
   </jsp:attribute>
   <jsp:attribute name="main"> this is main text</jsp:attribute>
   <jsp:attribute name="right"> this is the right bar</jsp:attribute>

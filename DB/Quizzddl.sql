@@ -66,6 +66,3 @@ create table UserTypes(
      user_type_name varchar(50)
      
 )
-
-
-

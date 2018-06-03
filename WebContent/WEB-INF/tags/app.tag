@@ -4,17 +4,32 @@
 <%@attribute name="main" fragment="true" %>
 <%@attribute name="right" fragment="true" %>
 <%@attribute name="head" fragment="true" %>
-<head>
+<%@attribute name="header_left" fragment="true" %>
 
+<head>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/main.css"/>
+  <link rel="stylesheet" href="styles/reset.css"/>
 </head>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/main.css"/>
+
 <jsp:invoke fragment="head"/>
 <body>
 <div class="container">
   <div class="header">
     <a href="/index"><img class="logo" src="${pageContext.request.contextPath}/images/logo.png"></a>
     <ul>
-      <li>Home</li>
+      <li><a href="/index">Home</a></li>
+      <jsp:invoke fragment="header_left"/>
+    </ul>
+    <ul class="right_header">
+      <%
+        boolean logged = false;
+        if (logged) {%>
+      <li><a href="#">Username</a></li>
+      <li><a href="#">Logout</a></li>
+      <%} else {%>
+      <li><a href="#">Register</a></li>
+      <li><a href="#">Log in</a></li>
+      <%}%>
     </ul>
   </div>
   <div class="menu">
