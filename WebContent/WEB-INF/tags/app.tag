@@ -5,7 +5,7 @@
 <%@attribute name="right" fragment="true" %>
 <%@attribute name="head" fragment="true" %>
 <%@attribute name="header_left" fragment="true" %>
-
+<html>
 <head>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/main.css"/>
   <link rel="stylesheet" href="styles/reset.css"/>
