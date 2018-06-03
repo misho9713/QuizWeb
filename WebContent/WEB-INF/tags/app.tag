@@ -35,9 +35,8 @@
   <div class="menu">
     <jsp:invoke fragment="menu"/>
   </div>
-  <div class="main">
+  <div class="main" >
     <jsp:invoke fragment="main"/>
-
   </div>
   <div class="right">
     <jsp:invoke fragment="right"/>
