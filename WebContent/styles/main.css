@@ -65,21 +65,4 @@ body {
   float: right;
 }
 
-.form-content {
-  grid-area: content;
-  width: 99%;
-}
 
-.empty-left {
-  grid-area: left;
-}
-
-.empty-right {
-  grid-area: right;
-}
-
-.login-form {
-  display: grid;
-  grid-template-areas: 'left content right';
-  grid-gap: 5px;
-}

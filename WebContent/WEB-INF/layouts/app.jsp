@@ -58,14 +58,23 @@
     </ul>
   </div>
   <div class="menu">
-    <%
-      String menu = getIncludePageName("menu", request);
-      if (menu.length() > 0) {
-    %>
-    <jsp:include page="<%=menu%>"/>
-    <%}%>
+    <ul>
+      <%
+        for (int i = 0; i < 30; i++) {
+      %>
+      <li> list item <%=i%>
+      </li>
+      <%}%>
+      <%
+        String menu = getIncludePageName("menu", request);
+        if (menu.length() > 0) {
+      %>
+      <jsp:include page="<%=menu%>"/>
+      <%}%>
+    </ul>
+
   </div>
-  <div class="main">
+  <div align="center" class="main">
     <%
       String main = getIncludePageName("main", request);
       if (main.length() > 0) {

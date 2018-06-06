@@ -7,3 +7,4 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <title>Quiz Website</title>
+<link rel="stylesheet" href="styles/home.css">

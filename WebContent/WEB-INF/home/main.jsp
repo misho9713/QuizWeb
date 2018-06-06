@@ -15,11 +15,11 @@
       <br>
       <label>
         Username
-        <input name="username">
+        <input name="username" type="text">
       </label>
       <br>
       <label>Password
-        <input type="password" type="password">
+        <input type="password">
       </label>
       <input type="submit" value="log in">
     </form>
