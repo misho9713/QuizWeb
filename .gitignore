@@ -3,3 +3,7 @@ out/*
 **.iml
 build
 **.class
+.settings/*
+.classpath
+.project
+DB/dbinfo.json
