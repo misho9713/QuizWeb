@@ -1,0 +1,5 @@
+{
+  "serverUrl": "jdbc:mysql://localhost:3306/test_db?characterEncoding=UTF8",
+  "username": "root",
+  "password": null
+}
