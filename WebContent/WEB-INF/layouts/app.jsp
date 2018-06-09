@@ -75,7 +75,7 @@
     </ul>
 
   </div>
-  <div align="center" class="main">
+  <div class="main">
     <%
       String main = getIncludePageName("main", request);
       if (main.length() > 0) {
