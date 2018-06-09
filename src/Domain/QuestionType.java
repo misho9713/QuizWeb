@@ -1,31 +1,33 @@
 package Domain;
 
-import java.util.List;
-
 public class QuestionType {
-	
-	private int _questiontypeId;
-	   
-	private String _questiontype;
 
-  public int get_questiontypeId() {
-		return _questiontypeId;
-	}
+    private String questionType;
 
-	public void set_questiontypeId(int _questiontypeId) {
-		this._questiontypeId = _questiontypeId;
-	}
+    private int questionTypeId;
 
-	public String get_questiontype() {
-		return _questiontype;
-	}
+    public QuestionType(String questionType, int questionTypeId) {
+        this.questionType = questionType;
+        this.questionTypeId = questionTypeId;
+    }
 
-	public void set_questiontype(String _questiontype) {
-		this._questiontype = _questiontype;
-	}
-	
+    public QuestionType() {
 
-  
-  
-   
+    }
+
+    public String getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(String questionType) {
+        this.questionType = questionType;
+    }
+
+    public int getQuestionTypeId() {
+        return questionTypeId;
+    }
+
+    public void setQuestionTypeId(int questionTypeId) {
+        this.questionTypeId = questionTypeId;
+    }
 }

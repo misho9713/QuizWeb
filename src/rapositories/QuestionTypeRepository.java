@@ -9,84 +9,83 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.QEncoderStream;
-
 import Domain.QuestionType;
-import Domain.Questions;
 
 public class QuestionTypeRepository {
-         private final DataSource ds;
-         
-       public QuestionTypeRepository(DataSource ds) {
-    	   this.ds = ds;
-       }
-       
-       public QuestionType getByID(int id) throws SQLException {
-           try (Connection conn = ds.getConnection()) {
-               try (PreparedStatement stmt = conn.prepareStatement("select * from QuestionTypes  where ID = ?")) {
-                   stmt.setInt(1, id);
+    private final DataSource ds;
 
-                   try (ResultSet rslt = stmt.executeQuery()) {
-                       if (rslt.next()) {
-                           return fetchQuestionType(rslt);
-                       } else {
-                           throw new IllegalArgumentException("Invalid course id");
-                       }
-                   }
-               }
-           }
+    public QuestionTypeRepository(DataSource ds) {
+        this.ds = ds;
+    }
 
-       }
-        public List<QuestionType> getAllQuestionType() throws SQLException {
-        	List<QuestionType> resSet = new ArrayList<>();
-     	   try(Connection conn = ds.getConnection()){
-    		   try(PreparedStatement stm = conn.prepareStatement("select  * from QuestionTypes as qt order by ID desc")){
-    			  try( ResultSet res = stm.executeQuery()){
-    				  while(res.next()) {
-    					  resSet.add(fetchQuestionType(res));
-    				  }
-    				  return resSet;
-    			  }
-    		   }
-    			  
-    	   }
-        	
-       }
-        
-        public void Update(QuestionType entity) throws SQLException {
-        	Connection conn = ds.getConnection();        	
-        	String query ="update QuestionTypes SET question_name=? where ID=?";
-        	PreparedStatement stmt = conn.prepareStatement(query);
-        	stmt.setString(1, entity.get_questiontype());
-        	stmt.setInt(2, entity.get_questiontypeId());
-        	stmt.executeUpdate(); 
-        	stmt.close();
+    public QuestionType getByID(int id) throws SQLException {
+        try (Connection conn = ds.getConnection()) {
+            try (PreparedStatement stmt = conn.prepareStatement("select * from QuestionTypes  where ID = ?")) {
+                stmt.setInt(1, id);
+
+                try (ResultSet rslt = stmt.executeQuery()) {
+                    if (rslt.next()) {
+                        return fetchQuestionType(rslt);
+                    } else {
+                        throw new IllegalArgumentException("Invalid course id");
+                    }
+                }
+            }
         }
-       public void insert(QuestionType entity) throws SQLException {
-    	   Connection conn = ds.getConnection();
-    	   String query = "insert into QuestionTypes(ID,question_name) values(null,?)";
-    	   PreparedStatement stmt = conn.prepareStatement(query);
-    	   stmt.setString(1, entity.get_questiontype());
-    	   stmt.executeUpdate();
-    	   stmt.close();
-       }
-       public void deleteById(int id) throws SQLException {
-    	   Connection conn = ds.getConnection();
-    	   String query = "delete from QuestionTypes where ID=?";
-    	   PreparedStatement stmt = conn.prepareStatement(query);
-    	   stmt.setInt(1, id);
-    	   stmt.executeUpdate();
-    	   stmt.close();
-       }
-       
-       public QuestionType fetchQuestionType(ResultSet rslt) throws SQLException {
-    	   QuestionType qtype = new QuestionType();
-    	   qtype.set_questiontypeId(rslt.getInt("ID"));
-    	   qtype.set_questiontype(rslt.getString("question_name"));
-    	   
-    	   return qtype;
-    	   
-       }
+
+    }
+
+    public List<QuestionType> getAllQuestionType() throws SQLException {
+        List<QuestionType> resSet = new ArrayList<>();
+        try (Connection conn = ds.getConnection()) {
+            try (PreparedStatement stm = conn.prepareStatement("select  * from QuestionTypes as qt order by ID desc")) {
+                try (ResultSet res = stm.executeQuery()) {
+                    while (res.next()) {
+                        resSet.add(fetchQuestionType(res));
+                    }
+                    return resSet;
+                }
+            }
+
+        }
+
+    }
+
+    public void Update(QuestionType entity) throws SQLException {
+        Connection conn = ds.getConnection();
+        String query = "update QuestionTypes SET question_name=? where ID=?";
+        PreparedStatement stmt = conn.prepareStatement(query);
+        stmt.setString(1, entity.getQuestionType());
+        stmt.setInt(2, entity.getQuestionTypeId());
+        stmt.executeUpdate();
+        stmt.close();
+    }
+
+    public void insert(QuestionType entity) throws SQLException {
+        Connection conn = ds.getConnection();
+        String query = "insert into QuestionTypes(ID,question_name) values(null,?)";
+        PreparedStatement stmt = conn.prepareStatement(query);
+        stmt.setString(1, entity.getQuestionType());
+        stmt.executeUpdate();
+        stmt.close();
+    }
+
+    public void deleteById(int id) throws SQLException {
+        Connection conn = ds.getConnection();
+        String query = "delete from QuestionTypes where ID=?";
+        PreparedStatement stmt = conn.prepareStatement(query);
+        stmt.setInt(1, id);
+        stmt.executeUpdate();
+        stmt.close();
+    }
+
+    public QuestionType fetchQuestionType(ResultSet rslt) throws SQLException {
+        QuestionType qtype = new QuestionType();
+        qtype.setQuestionTypeId(rslt.getInt("ID"));
+        qtype.setQuestionType(rslt.getString("question_name"));
+
+        return qtype;
+
+    }
 
 }
