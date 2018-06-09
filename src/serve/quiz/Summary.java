@@ -13,7 +13,7 @@ public class Summary extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("main", INDEX_DIR + "main.jsp");
-        request.getRequestDispatcher("WEB-INF/layouts/app.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/layouts/app.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
