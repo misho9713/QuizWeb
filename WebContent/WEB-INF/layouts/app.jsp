@@ -32,6 +32,12 @@
     </ul>
     <ul class="right_header">
       <%
+        String rightHeader = getIncludePageName("rightHeader", request);
+        if (rightHeader.length() > 0) {
+      %>
+      <jsp:include page="<%=rightHeader%>"/>
+      <%}%>
+      <%
 
         boolean
                 logged
@@ -49,12 +55,7 @@
       <li><a href="#">Register</a></li>
       <li><a href="#">Log in</a></li>
       <%}%>
-      <%
-        String rightHeader = getIncludePageName("rightHeader", request);
-        if (rightHeader.length() > 0) {
-      %>
-      <jsp:include page="<%=rightHeader%>"/>
-      <%}%>
+
     </ul>
   </div>
   <div class="menu">
