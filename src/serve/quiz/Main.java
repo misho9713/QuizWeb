@@ -13,6 +13,7 @@ public class Main extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("main", INDEX_DIR + "main.jsp");
+        request.setAttribute("head", INDEX_DIR + "head.jsp");
         request.getRequestDispatcher("/WEB-INF/layouts/app.jsp").forward(request, response);
     }
 
