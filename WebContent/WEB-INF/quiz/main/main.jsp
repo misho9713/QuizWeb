@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <form>
   quiz page?
-  <label>1) <input type="radio" name="quiz" value="YES"></label>
-  <label>2) <input type="radio" name="quiz" value="NO"></label>
-  <label>3) <input type="radio" name="quiz" value="Don't know"></label>
-  <label>4) <input type="radio" name="quiz" value="None of above"></label>
+  <label>1) <input type="radio" name="quiz" value="YES">Yes</label>
+  <label>2) <input type="radio" name="quiz" value="NO">No</label>
+  <label>3) <input type="radio" name="quiz" value="Don't know">Don't know</label>
+  <label>4) <input type="radio" name="quiz" value="None of above">None of above</label>
 </form>
