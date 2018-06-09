@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Misho
   Date: 06.06.2018
@@ -100,6 +100,13 @@
     <%}%>
   </div>
 </div>
+<%
+  List<String> scripts = (List<String>) request.getAttribute("scripts");
+  if (scripts != null)
+    for (String src : scripts) {
+%>
+<script src="<%=src%>"></script>
+<%}%>
 </body>
 
 </html>
