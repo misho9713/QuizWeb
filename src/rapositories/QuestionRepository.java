@@ -65,7 +65,7 @@ public class QuestionRepository {
 
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, entity.getID());
-            stmt.setInt(2, entity.get_questiontype().get_questiontypeId());
+            stmt.setInt(2, entity.get_questiontype().getQuestionTypeId());
             stmt.setString(3, entity.getQuestion());
             stmt.executeUpdate();
             stmt.close();
@@ -76,7 +76,7 @@ public class QuestionRepository {
         String query = "UPDATE Questions SET  QType_ID=?, question=? where ID=?";
         Connection conn = ds.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setInt(1, entity.get_questiontype().get_questiontypeId());
+        stmt.setInt(1, entity.get_questiontype().getQuestionTypeId());
         stmt.setString(2, entity.getQuestion());
         stmt.setInt(3, entity.getID());
         stmt.executeUpdate();
