@@ -2,3 +2,15 @@
 form > * {
   display: block;
 }
+
+#container {
+  padding: 5px;
+}
+
+.switch-question {
+  height: 99%;
+}
+
+.switch-question button {
+  height: 99%;
+}
