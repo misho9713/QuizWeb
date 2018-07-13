@@ -51,8 +51,9 @@ public class QuizSeeker implements EntitySeeker {
 
     @Override
     public Query generateQuery() {
-        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM ").
-                append(DB_TABLE_QUIZ).append("\n WHERE 1 = 1\n");
+        StringBuilder queryBuilder = new StringBuilder(String.format("SELECT *\n FROM %s\n  INNER JOIN %s u ON %s.%s = u.%s",
+                DB_TABLE_QUIZ, DB_TABLE_USER, DB_TABLE_QUIZ, DB_COLUMN_QUIZ_AUTHOR, DB_COLUMN_USER_ID))
+                .append("\n WHERE 1 = 1\n");
         List<Object> parameters = new ArrayList<>();
         addIf(queryBuilder, name, DB_COLUMN_QUIZ_NAME, parameters, Objects::nonNull);
         addIf(queryBuilder, author == null ? null : author.getId(), DB_COLUMN_QUIZ_AUTHOR, parameters, Objects::nonNull);

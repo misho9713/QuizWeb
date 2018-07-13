@@ -29,7 +29,7 @@ public class QuizManager implements EntityManager<Quiz, QuizSeeker> {
         try (ResultSet results = ServerConnect.getInstance().executeQuery(query.getSql(), query.getParameters())) {
             while (results.next()) {
 
-                Quiz quiz = QuizManager.getQuiz(results);
+                quizzes.add(QuizManager.getQuiz(results));
             }
         } catch (SQLException ignored) {
 
