@@ -12,7 +12,7 @@ CREATE TABLE users
 CREATE TABLE quizzes
 (
   quiz_id                  INT PRIMARY KEY AUTO_INCREMENT,
-  quiz_author              int     NOT NULL,
+  quiz_author              INT     NOT NULL,
   quiz_name                VARCHAR(150),
   is_random                BOOLEAN NOT NULL,
   is_single_page           BOOLEAN NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE questions
   quiz_id         INT NOT NULL,
   question_text   TEXT,
   question_type   ENUM ('text', 'fill-blank', 'multiple-choice', 'picture') DEFAULT 'text',
-  question_timer  INT                                                       DEFAULT 0,
+  question_timer  LONG,
   CONSTRAINT questions_quizzes_quiz_id_fk FOREIGN KEY (quiz_id) REFERENCES quizzes (quiz_id)
     ON DELETE CASCADE,
   answer_count    INT                                                       DEFAULT 1,
@@ -108,18 +108,20 @@ CREATE TABLE quiz_taken
   quiz_start    DATE NOT NULL,
   quiz_end      DATE NOT NULL,
   quiz_score    INT  NOT NULL,
-  quiz_practice BOOLEAN         default false,
+  quiz_practice BOOLEAN         DEFAULT FALSE,
   CONSTRAINT quiz_taken_quizzes_quiz_id_fk FOREIGN KEY (quiz_id) REFERENCES quizzes (quiz_id)
     ON DELETE CASCADE,
   CONSTRAINT quiz_taken_user_user_id_fk FOREIGN KEY (user_id) REFERENCES users (user_id)
     ON DELETE CASCADE
 );
-CREATE TABLE achievements
+CREATE TABLE achievemnts
 (
   achievement_id   INT PRIMARY KEY AUTO_INCREMENT,
-  user_id          INT                                                                  NOT NULL,
-  achievement_name ENUM ('Amateur Author', 'Prolific Author', 'Prodigious Author',
-                         'Quiz Machine', 'I am the Greatest', 'Practice Makes Perfect') NOT NULL,
-  CONSTRAINT achievements_user_user_id_fk FOREIGN KEY (user_id) REFERENCES users (user_id)
-    ON DELETE CASCADE
+  user_id          INT                                                                                                                            NOT NULL,
+  quiz_id          INT             DEFAULT NULL,
+  achievement_name ENUM ('Amateur Author', 'Prolific Author', 'Prodigious Author', 'Quiz Machine', 'I am the Greatest', 'Practice Makes Perfect') NOT NULL,
+  CONSTRAINT achievemnts_user_user_id_fk FOREIGN KEY (user_id) REFERENCES users (user_id)
+    ON DELETE CASCADE,
+  CONSTRAINT achievemnts_quizzes_quiz_id_fk FOREIGN KEY (quiz_id) REFERENCES quizzes (quiz_id)
+    ON DELETE SET NULL
 );
