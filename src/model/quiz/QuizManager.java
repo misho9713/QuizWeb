@@ -8,6 +8,7 @@ import model.user.UserManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,9 +17,9 @@ import static misc.DBConstants.*;
 public class QuizManager implements EntityManager<Quiz, QuizSeeker> {
     private static Quiz getQuiz(ResultSet results) throws SQLException {
         return new Quiz(results.getInt(DB_COLUMN_QUIZ_ID), results.getString(DB_COLUMN_QUIZ_NAME),
-                results.getBoolean(DB_COLUMN_QUIZ_RANDOM), results.getBoolean(DB_COLUMN_QUIZ_SINGLE),
-                results.getBoolean(DB_COLUMN_QUIZ_IMMEDIATE), results.getBoolean(DB_COLUMN_QUIZ_PRACTICE),
-                UserManager.getUser(results));
+                UserManager.getUser(results), results.getBoolean(DB_COLUMN_QUIZ_RANDOM), results.getBoolean(DB_COLUMN_QUIZ_SINGLE),
+                results.getBoolean(DB_COLUMN_QUIZ_IMMEDIATE), results.getBoolean(DB_COLUMN_QUIZ_PRACTICE)
+        );
     }
 
     @Override
@@ -38,7 +39,20 @@ public class QuizManager implements EntityManager<Quiz, QuizSeeker> {
 
     @Override
     public boolean addEntry(Quiz entry) {
-        return false;
+        int rows;
+        try {
+            rows = ServerConnect.getInstance().executeUpdate(
+                    String.format("INSERT  INTO %s(%s, %s, %s, %s, %s, %s) " +
+                                    "VALUE (?,?,?,?,?,?)", DB_TABLE_QUIZ,
+                            DB_COLUMN_QUIZ_AUTHOR, DB_COLUMN_QUIZ_NAME, DB_COLUMN_QUIZ_RANDOM,
+                            DB_COLUMN_QUIZ_SINGLE, DB_COLUMN_QUIZ_IMMEDIATE, DB_COLUMN_QUIZ_PRACTICE),
+                    Arrays.asList(entry.getQuizAuthor().getId(), entry.getName(), entry.isRandom(),
+                            entry.isSinglePage(), entry.hasImmediateCorrection(), entry.isPracticable()));
+
+        } catch (Exception e) {
+            return false;
+        }
+        return rows != 0;
     }
 
     @Override
