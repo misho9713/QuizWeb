@@ -5,7 +5,7 @@ CREATE TABLE users
 (
   user_id            INT PRIMARY KEY AUTO_INCREMENT,
   user_name          VARCHAR(100) UNIQUE,
-  user_password_hash TEXT                           NOT NULL,
+  user_password_hash VARCHAR(40)                    NOT NULL,
   user_role          ENUM ('user', 'administrator') NOT NULL
 );
 
