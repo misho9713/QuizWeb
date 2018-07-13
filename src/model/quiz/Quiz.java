@@ -74,6 +74,11 @@ public class Quiz implements Entity {
     }
 
     @Override
+    public String toString() {
+        return toJson().toString();
+    }
+
+    @Override
     public int getId() {
         return id;
     }

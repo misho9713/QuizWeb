@@ -51,6 +51,7 @@ public class User implements Entity {
         return toJson().toString();
     }
 
+    @Override
     public JsonObject toJson() {
         JsonObjectBuilder builder = Json.createObjectBuilder();
         builder.add(DB_COLUMN_USER_ID, id);
