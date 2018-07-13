@@ -26,7 +26,7 @@ CREATE TABLE questions
   question_id     INT PRIMARY KEY                                           AUTO_INCREMENT,
   quiz_id         INT NOT NULL,
   question_text   TEXT,
-  question_type   ENUM ('text', 'fill-blank', 'multiple-choice', 'picture') DEFAULT 'text',
+  question_type   ENUM ('text', 'fill_blank', 'multiple_choice', 'picture') DEFAULT 'text',
   question_timer  LONG,
   CONSTRAINT questions_quizzes_quiz_id_fk FOREIGN KEY (quiz_id) REFERENCES quizzes (quiz_id)
     ON DELETE CASCADE,
