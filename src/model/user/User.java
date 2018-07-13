@@ -41,6 +41,7 @@ public class User implements Entity {
     }
 
     public enum UserRole {
-        USER, ADMINISTRATOR
+        USER, ADMINISTRATOR;
+
     }
 }
