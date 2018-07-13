@@ -33,6 +33,7 @@ body {
 
 .menu {
   grid-area: menu;
+  padding: 20px
 }
 
 .main {
@@ -65,4 +66,6 @@ body {
   float: right;
 }
 
-
+#login-form {
+  padding: 10px;
+}

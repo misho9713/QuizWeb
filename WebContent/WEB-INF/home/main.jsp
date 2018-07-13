@@ -6,11 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <div class="login-form">
   <div class="empty-left"></div>
   <div class="form-content">
-    <form action="#" method="POST">
+    <form action="#" id="login-form" method="POST">
       You are not logged in
       <br>
       <label>
