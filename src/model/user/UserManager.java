@@ -1,6 +1,7 @@
 package model.user;
 
 import Domain.ServerConnect;
+import misc.Encryption;
 import model.common.EntityManager;
 
 import java.sql.ResultSet;
@@ -31,7 +32,7 @@ public class UserManager implements EntityManager<User, UserSeeker> {
                                     "VALUE (?,?,?)",
                             DB_TABLE_USER, DB_COLUMN_USER_NAME,
                             DB_COLUMN_USER_PASSWORD, DB_COLUMN_USER_ROLE),
-                    Arrays.asList(entry.getName(), entry.getPassword(), entry.getRole().toString()));
+                    Arrays.asList(entry.getName(), Encryption.encrypt(entry.getPassword()), entry.getRole().toString()));
         } catch (Exception e) {
             return false;
         }
