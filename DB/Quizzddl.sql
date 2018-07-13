@@ -104,6 +104,7 @@ CREATE TABLE quiz_taken
   user_id       INT  NOT NULL,
   quiz_start    DATE NOT NULL,
   quiz_end      DATE NOT NULL,
+  quiz_score    INT  NOT NULL,
   CONSTRAINT quiz_taken_quizzes_quiz_id_fk FOREIGN KEY (quiz_id) REFERENCES quizzes (quiz_id)
     ON DELETE CASCADE,
   CONSTRAINT quiz_taken_user_user_id_fk FOREIGN KEY (user_id) REFERENCES user (user_id)
