@@ -5,6 +5,7 @@ import model.common.EntityManager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -12,7 +13,7 @@ import static misc.DBConstants.*;
 
 public class UserManager implements EntityManager<User, UserSeeker> {
     public static User getUser(ResultSet results) throws SQLException {
-        return new User();
+        return null;
     }
 
     @Override
@@ -29,7 +30,8 @@ public class UserManager implements EntityManager<User, UserSeeker> {
                     String.format("INSERT  INTO %s(%s, %s, %s)" +
                                     "VALUE (?,?,?)",
                             DB_TABLE_USER, DB_COLUMN_USER_NAME,
-                            DB_COLUMN_USER_PASSWORD, DB_COLUMN_USER_ROLE));
+                            DB_COLUMN_USER_PASSWORD, DB_COLUMN_USER_ROLE),
+                    Arrays.asList(entry.getName(), entry.getPassword(), entry.getRole().toString()));
         } catch (Exception e) {
             return false;
         }
