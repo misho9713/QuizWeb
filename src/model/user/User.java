@@ -2,6 +2,11 @@ package model.user;
 
 import model.common.Entity;
 
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+
+import static misc.DBConstants.*;
+
 public class User implements Entity {
     private final int id;
     private final String name;
@@ -38,6 +43,16 @@ public class User implements Entity {
     @Override
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        JsonObjectBuilder builder = Json.createObjectBuilder();
+        builder.add(DB_COLUMN_USER_ID, id);
+        builder.add(DB_COLUMN_USER_NAME, name);
+        builder.add(DB_COLUMN_USER_PASSWORD, password);
+        builder.add(DB_COLUMN_USER_ROLE, role.toString());
+        return builder.build().toString();
     }
 
     public enum UserRole {
