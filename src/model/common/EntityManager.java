@@ -1,9 +1,9 @@
 package model.common;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface EntityManager<E extends Entity, S extends EntitySeeker> {
-    List<E> findEntities(S seeker);
+    Collection<E> findEntities(S seeker);
 
     boolean addEntry(E entry);
 
