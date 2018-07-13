@@ -36,7 +36,7 @@ public class ServerConnect {
             ds.setUsername(info.getString("username"));
             if (!info.isNull("password")) ds.setPassword(info.getString("passwordF"));
         } catch (Exception e) {
-            ds.setUrl("jdbc:mysql://localhost:3306/test_db?characterEncoding=UTF8");
+            ds.setUrl("jdbc:mysql://localhost:3306/");
             ds.setUsername("root");
         }
         return ds;
