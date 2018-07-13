@@ -24,24 +24,27 @@ public class UserSeeker implements EntitySeeker<User> {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public UserSeeker setUserName(String userName) {
         this.userName = userName;
+        return this;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public UserSeeker setId(int id) {
         this.id = id;
+        return this;
     }
 
     public User.UserRole getRole() {
         return role;
     }
 
-    public void setRole(User.UserRole role) {
+    public UserSeeker setRole(User.UserRole role) {
         this.role = role;
+        return this;
     }
 
     @Override

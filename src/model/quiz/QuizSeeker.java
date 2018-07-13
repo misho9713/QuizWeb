@@ -25,24 +25,27 @@ public class QuizSeeker implements EntitySeeker {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public QuizSeeker setAuthor(User author) {
         this.author = author;
+        return this;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public QuizSeeker setId(int id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public QuizSeeker setName(String name) {
         this.name = name;
+        return this;
     }
 
 
