@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static misc.DBConstants.*;
@@ -57,5 +58,41 @@ public class QuizManager implements EntityManager<Quiz, QuizSeeker> {
     @Override
     public boolean remove(int id) {
         return false;
+    }
+
+    @Override
+    public Quiz get(int id) {
+        String sql = String.format("SELECT *\n FROM %s\n  INNER JOIN %s u ON %s.%s = u.%s WHERE %s = ?",
+                DB_TABLE_QUIZ, DB_TABLE_USER, DB_TABLE_QUIZ, DB_COLUMN_QUIZ_AUTHOR, DB_COLUMN_USER_ID, DB_COLUMN_QUIZ_ID);
+        try (ResultSet rs = ServerConnect.getInstance().executeQuery(sql, Collections.singletonList(id))) {
+            if (rs.next()) {
+                return getQuiz(rs);
+            }
+        } catch (Exception ignored) {
+
+        }
+        return null;
+    }
+
+    public List<Question> getAllQuestionsOf(Quiz quiz) {
+        List<Question> questions = new ArrayList<>();
+        String query = String.format("SELECT *\n" +
+                        "FROM %s\n" +
+                        "  LEFT JOIN %s q ON %s.%s = q.%s\n" +
+                        "WHERE q.%s = ?",
+                DB_TABLE_QUESTION, DB_TABLE_QUIZ, DB_TABLE_QUESTION, DB_COLUMN_QUESTION_QUIZ_ID, DB_COLUMN_QUIZ_ID, DB_COLUMN_QUIZ_ID);
+        try (ResultSet rs = ServerConnect.getInstance().executeQuery(query, Collections.singletonList(quiz.getId()))) {
+            while (rs.next()) {
+
+            }
+        } catch (Exception ignored) {
+
+        }
+        return questions;
+    }
+
+    private List<Question> getAllQuestionsOf(int id) {
+
+        return getAllQuestionsOf(get(id));
     }
 }
