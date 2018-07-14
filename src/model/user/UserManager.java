@@ -7,7 +7,10 @@ import model.common.EntitySeeker;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static misc.DBConstants.*;
 
@@ -19,7 +22,7 @@ public class UserManager implements EntityManager<User, UserSeeker> {
     }
 
     @Override
-    public Collection<User> findEntities(UserSeeker seeker) {
+    public List<User> findEntities(UserSeeker seeker) {
         List<User> users = new ArrayList<>();
         EntitySeeker.Query query = seeker.generateQuery();
         try (ResultSet results = ServerConnect.getInstance().executeQuery(query.getSql(), query.getParameters())) {

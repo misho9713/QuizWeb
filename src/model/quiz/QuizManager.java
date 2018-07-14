@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import static misc.DBConstants.*;
@@ -23,7 +22,7 @@ public class QuizManager implements EntityManager<Quiz, QuizSeeker> {
     }
 
     @Override
-    public Collection<Quiz> findEntities(QuizSeeker seeker) {
+    public List<Quiz> findEntities(QuizSeeker seeker) {
         List<Quiz> quizzes = new ArrayList<>();
         EntitySeeker.Query query = seeker.generateQuery();
         try (ResultSet results = ServerConnect.getInstance().executeQuery(query.getSql(), query.getParameters())) {
