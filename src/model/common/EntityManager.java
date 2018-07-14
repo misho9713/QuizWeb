@@ -8,4 +8,6 @@ public interface EntityManager<E extends Entity, S extends EntitySeeker> {
     boolean addEntry(E entry);
 
     boolean remove(int id);
+
+    E get(int id);
 }
