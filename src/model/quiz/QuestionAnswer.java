@@ -38,7 +38,7 @@ public class QuestionAnswer implements Entity {
     public JsonObject toJson() {
         JsonObjectBuilder builder = Json.createObjectBuilder();
         builder.add(DB_COLUMN_QUESTION_ANSWER_ID, id);
-        builder.add(DB_COLUMN_QUESTION_ANSWER_QUESTIN_ID, question.getId());
+        builder.add(DB_COLUMN_QUESTION_ANSWER_QUESTION_ID, question.getId());
         builder.add(DB_COLUMN_QUESTION_ANSWER_TEXT, answer);
         builder.add(DB_COLUMN_QUESTION_ANSWER_CORRECT, isCorrect);
 

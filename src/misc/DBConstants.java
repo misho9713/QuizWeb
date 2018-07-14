@@ -32,7 +32,7 @@ public final class DBConstants {
     /* Question answer table constants */
     public static final String DB_TABLE_QUESTION_ANSWER = "question_answer";
     public static final String DB_COLUMN_QUESTION_ANSWER_ID = "answer_id";
-    public static final String DB_COLUMN_QUESTION_ANSWER_QUESTIN_ID = "question_id";
+    public static final String DB_COLUMN_QUESTION_ANSWER_QUESTION_ID = "question_id";
     public static final String DB_COLUMN_QUESTION_ANSWER_TEXT = "answer";
     public static final String DB_COLUMN_QUESTION_ANSWER_CORRECT = "is_correct";
 
