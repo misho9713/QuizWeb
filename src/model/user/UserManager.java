@@ -67,6 +67,17 @@ public class UserManager implements EntityManager<User, UserSeeker> {
         return rows != 0;
     }
 
+    @Override
+    public User get(int id) {
+        EntitySeeker.Query query = new UserSeeker().setId(id).generateQuery();
+        try (ResultSet rs = ServerConnect.getInstance().executeQuery(query.getSql(), query.getParameters())) {
+            if (rs.next()) return getUser(rs);
+        } catch (SQLException ignored) {
+
+        }
+        return null;
+    }
+
     public boolean remove(String id) {
         int rows;
         try {
