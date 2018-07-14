@@ -123,6 +123,27 @@ public class QuizManager implements EntityManager<Quiz, QuizSeeker> {
         return questions;
     }
 
+    private List<QuestionAnswer> getAllAnswersOf(Question question) {
+        List<QuestionAnswer> answers = new ArrayList<>();
+        String query = String.format("SELECT *\n" +
+                        "FROM %s\n" +
+                        "  LEFT JOIN %s q ON %s.%s = q.%s\n" +
+                        "WHERE q.%s = ?;",
+                DB_TABLE_QUESTION_ANSWER, DB_TABLE_QUESTION, DB_TABLE_QUESTION_ANSWER, DB_COLUMN_QUESTION_ANSWER_QUESTION_ID, DB_COLUMN_QUESTION_ID, DB_COLUMN_QUESTION_ID);
+        try (ResultSet rs = ServerConnect.getInstance().executeQuery(query, Collections.singletonList(question.getId()))) {
+            while (rs.next()) {
+                answers.add(getAnswer(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return answers;
+    }
+
+    private QuestionAnswer getAnswer(ResultSet rs) {
+        return null;
+    }
+
     private List<Question> getAllQuestionsOf(int id) {
 
         return getAllQuestionsOf(get(id));
