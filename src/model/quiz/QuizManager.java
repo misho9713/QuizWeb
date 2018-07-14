@@ -88,7 +88,15 @@ public class QuizManager implements EntityManager<Quiz, QuizSeeker> {
 
     @Override
     public boolean remove(int id) {
-        return false;
+
+        String sql = String.format("DELETE  * FROM %s WHERE %s = %d", DB_TABLE_QUIZ, DB_COLUMN_QUIZ_ID, id);
+        int rows = 0;
+        try {
+            rows = ServerConnect.getInstance().executeUpdate(sql);
+        } catch (Exception ignored) {
+
+        }
+        return rows != 0;
     }
 
 
