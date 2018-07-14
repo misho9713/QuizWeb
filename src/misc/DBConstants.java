@@ -3,7 +3,7 @@ package misc;
 public final class DBConstants {
     public static final String MYSQL_DATABASE_NAME = "quizdb";
     /* Quiz table constants */
-    public static final String DB_TABLE_QUIZ = "quizzes";
+    public static final String DB_TABLE_QUIZ = "quiz";
     public static final String DB_COLUMN_QUIZ_ID = "quiz_id";
     public static final String DB_COLUMN_QUIZ_NAME = "quiz_name";
     public static final String DB_COLUMN_QUIZ_RANDOM = "is_random";
@@ -13,14 +13,14 @@ public final class DBConstants {
     public static final String DB_COLUMN_QUIZ_AUTHOR = "quiz_author";
 
     /* User table constants*/
-    public static final String DB_TABLE_USER = "users";
+    public static final String DB_TABLE_USER = "account";
     public static final String DB_COLUMN_USER_ID = "user_id";
     public static final String DB_COLUMN_USER_NAME = "user_name";
     public static final String DB_COLUMN_USER_PASSWORD = "user_password_hash";
     public static final String DB_COLUMN_USER_ROLE = "user_role";
 
     /* Question table constants */
-    public static final String DB_TABLE_QUESTION = "questions";
+    public static final String DB_TABLE_QUESTION = "question";
     public static final String DB_COLUMN_QUESTION_ID = "question_id";
     public static final String DB_COLUMN_QUESTION_QUIZ_ID = "quiz_id";
     public static final String DB_COLUMN_QUESTION_TEXT = "question_text";
@@ -30,7 +30,7 @@ public final class DBConstants {
     public static final String DB_COLUMN_QUESTION_WEIGHT = "question_weight";
 
     /* Question answer table constants */
-    public static final String DB_TABLE_QUESTION_ANSWER = "question_answers";
+    public static final String DB_TABLE_QUESTION_ANSWER = "question_answer";
     public static final String DB_COLUMN_QUESTION_ANSWER_ID = "answer_id";
     public static final String DB_COLUMN_QUESTION_ANSWER_QUESTIN_ID = "question_id";
     public static final String DB_COLUMN_QUESTION_ANSWER_TEXT = "answer";
@@ -81,7 +81,7 @@ public final class DBConstants {
     public static final String DB_COLUMN_TAKEN_QUIZ_SCORE = "quiz_score";
 
     /* Achievement table constants */
-    public static final String DB_TABLE_ACHIEVEMENTS = "achievements";
+    public static final String DB_TABLE_ACHIEVEMENTS = "achievement";
     public static final String DB_COLUMN_ACHIEVEMENT_ID = "achievement_id";
     public static final String DB_COLUMN_ACHIEVEMENT_USER = "user_id";
     public static final String DB_COLUMN_ACHIEVEMENT_QUIZ = "quiz_id";
