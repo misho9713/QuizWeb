@@ -161,7 +161,7 @@ public class QuizManager implements EntityManager<Quiz, QuizSeeker> {
         } catch (SQLException e) {
             question = findQuestion(rs.getInt(DB_COLUMN_QUESTION_ANSWER_QUESTION_ID));
         }
-        return null;
+        return new QuestionAnswer(rs.getInt(DB_COLUMN_QUESTION_ANSWER_ID), question, rs.getString(DB_COLUMN_QUESTION_ANSWER_TEXT), rs.getBoolean(DB_COLUMN_QUESTION_ANSWER_CORRECT));
     }
 
     private List<Question> getAllQuestionsOf(int id) {
