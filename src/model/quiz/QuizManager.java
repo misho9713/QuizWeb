@@ -140,7 +140,27 @@ public class QuizManager implements EntityManager<Quiz, QuizSeeker> {
         return answers;
     }
 
-    private QuestionAnswer getAnswer(ResultSet rs) {
+    private static Question findQuestion(int id) {
+        String sql = String.format("SELECT *\n" +
+                        "FROM %s\n" +
+                        "  LEFT JOIN %s q ON %s.%s = q.%s\n" +
+                        "WHERE q.%s = ?;", DB_TABLE_QUESTION, DB_TABLE_QUIZ, DB_TABLE_QUESTION,
+                DB_COLUMN_QUESTION_QUIZ_ID, DB_COLUMN_QUIZ_ID, DB_COLUMN_QUIZ_ID);
+        try (ResultSet rs = ServerConnect.getInstance().executeQuery(sql, Collections.singletonList(id))) {
+            if (rs.next()) return getQuestion(rs);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private QuestionAnswer getAnswer(ResultSet rs) throws SQLException {
+        Question question;
+        try {
+            question = getQuestion(rs);
+        } catch (SQLException e) {
+            question = findQuestion(rs.getInt(DB_COLUMN_QUESTION_ANSWER_QUESTION_ID));
+        }
         return null;
     }
 
